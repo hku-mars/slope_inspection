@@ -1,0 +1,9 @@
+<launch>
+
+    <node name="fsm_node" pkg="rog_map" type="rogmap_node" output="screen">
+        <rosparam command="load" file="$(find rog_map)/config/rog.yaml"/>
+    </node>
+
+    <node pkg="rviz" type="rviz" name="viz_real" args="-d $(find rog_map)/config/viz_real.rviz"></node>
+
+</launch>

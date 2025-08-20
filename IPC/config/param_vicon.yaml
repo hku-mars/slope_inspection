@@ -1,0 +1,75 @@
+#----------------- IPC param -----------------#
+fsm:
+  simulation:    false
+  gazebo_flag:   false
+  frequency:     100.0
+  ctrl_delay:    0.0
+  sfc_dis:       0.3
+
+  bodyrate_flag: true
+  thrust_limit:  0.3
+  hover_esti:    false
+  hover_perc:    0.165
+  esti_log_flag: false
+  esti_R:        0.3
+
+  yaw_ctrl_flag: true
+  yaw_gain:      0.5
+
+  init_goal_x:   0.0
+  init_goal_y:   0.0
+  init_goal_z:   0.2
+  
+  pilot_vw:      2.0
+  pilot_vx:      2.0
+  pilot_vy:      2.0
+  pilot_vz:      1.5
+  auto_pilot_vx: 1.0
+  auto_pilot_vy: 1.0
+  auto_pilot_vz: 0.8
+
+map:
+  resolution:    0.1
+
+astar:
+  expand_dyn:    0.5
+  expand_fix:    0.3
+
+
+mpc:
+  horizon:       15
+  step:          0.1
+
+  R_p:           200.0
+  R_v:           0.0
+  R_a:           0.0
+  R_u:           0.1
+  R_u_con:       0.2
+  R_pN:          200.0
+  R_vN:          50.0
+  R_aN:          50.0
+
+  D_x:           0.0
+  D_y:           0.0
+  D_z:           0.0
+
+  vx_min:       -8.0
+  vy_min:       -8.0
+  vz_min:       -8.0
+  vx_max:        8.0
+  vy_max:        8.0
+  vz_max:        8.0
+
+  ax_min:       -30.0
+  ay_min:       -30.0
+  az_min:       -10.0
+  ax_max:        30.0
+  ay_max:        30.0
+  az_max:        30.0
+
+  ux_min:       -100.0
+  uy_min:       -100.0
+  uz_min:       -100.0
+  ux_max:        100.0
+  uy_max:        100.0
+  uz_max:        100.0

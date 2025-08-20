@@ -127,16 +127,34 @@ catkin_make -DCATKIN_WHITELIST_PACKAGES=
 
 ### (1) run MARSIM simulator
 
+static environment
+
 ```
 source devel/setup.bash
-roslaunch test_interface map_faster.launch
+roslaunch test_interface map.launch
+```
+
+dynamic environment
+
+```
+source devel/setup.bash
+roslaunch test_interface map_dyn.launch
 ```
 
 ### (2) run ipc
 
+for static environment (high traversability)
+
 ```
 source devel/setup.bash
-roslaunch test_interface ipc_sim.launch
+roslaunch ipc ipc_sim.launch
+```
+
+for dynamic environment (low traversability)
+
+```
+source devel/setup.bash
+roslaunch ipc ipc_sim_dyn.launch
 ```
 
 ### (3) run rc
@@ -147,13 +165,7 @@ option 1: PX4 flight controller + receiver + remote controller
 roslauch mavros px4.launch
 ```
 
-option 2: joystick
-
-```
-roslaunch joy_rc BT_x1.launch
-```
-
-option 3: sbus to USB module + receiver + remote controller
+option 2: sbus to USB module + receiver + remote controller
 
 ```
 rosrun joy_rc subs_rc_node
@@ -162,3 +174,26 @@ rosrun joy_rc subs_rc_node
 purchase: [sbus to USB module](https://item.taobao.com/item.htm?abbucket=1&id=945065337900&mi_id=0000JQFMzlhQngPHR4jHpETaA99nRWDuC-3gm7bBXLxKOIE&ns=1&priceTId=2147828517556989550222799e1257&skuId=5847858524751&spm=a21n57.1.hoverItem.4&utparam=%7B%22aplus_abtest%22%3A%222437657e83ff0381d7c73c86414814f0%22%7D&xxc=taobaoSearch)
 
 ![sbus to USB module](./img/sbus_to_USB.png)
+
+option 3: joystick
+
+```
+roslaunch joy_rc BT_x1.launch
+```
+
+### (4) rc operation process
+
+| Mode | Description | Channel 4 | Channel 5 | Channel 10 |
+| :----: | :----: | :----: | :----: | :----: |
+| Manual | Initial | < 1800 | < 1500 | < 1500 |
+| Hover | Keep hovering | > 1800 | < 1500 | < 1500 |
+| Pilot | Position control (without<br>assisted obstacle avoidance) | > 1800 | > 1500 | < 1500 |
+| AutoPilot | Position control (with<br>assisted obstacle avoidance) | > 1800 | > 1500 | trigger > 1500 |
+
+**Note**: When switching mode, keep Channel 2 near the center position of 1500.
+
+**Note**: Channel 11 for rc gain, trigger to high position to increase flight speed.
+
+### (5) some suggestions
+
+Due to the limited FOV of the LiDAR, the number of Unknown grid cells may reduce the traversability to navigate during assisted obstacle avoidance flight. In such cases, the pilot can move the control stick rapidly in multiple directions (forward, backward, left, and right) to convert as many Unknown grid cells as possible into Known Free state.

@@ -1,0 +1,165 @@
+#----------------- IPC param -----------------#
+fsm:
+  simulation:    false
+  gazebo_flag:   false
+  frequency:     100.0
+  ctrl_delay:    0.0
+  sfc_dis:       0.3
+
+  vel_ref:       2.0
+  path_dis:      0.1
+
+  bodyrate_flag: true
+  thrust_limit:  0.6
+  hover_esti:    true
+  hover_perc:    0.36
+  esti_log_flag: false
+  esti_R:        0.6
+
+  yaw_ctrl_flag: true
+  yaw_gain:      1.0
+
+  init_goal_x:   0.0
+  init_goal_y:   0.0
+  init_goal_z:   0.3
+  
+  pilot_vw:      1.5
+  pilot_vx:      1.0
+  pilot_vy:      1.0
+  pilot_vz:      0.8
+  auto_pilot_vx: 0.6
+  auto_pilot_vy: 0.6
+  auto_pilot_vz: 0.4
+
+astar:
+  resolution:    0.1
+  map_size_x:    10.0
+  map_size_y:    10.0
+  map_size_z:    4.0
+  expand_dyn:    0.5
+  expand_fix:    0.3
+  update_dt:     5.0
+
+rog_map:
+  resolution: 0.05
+  inflation_resolution: 0.15
+  inflation_step: 3
+  unk_inflation_en: true
+  unk_inflation_step: 2
+  map_size: [10,10,20]
+
+  # # forest
+  # inflation_step: 2
+  # unk_inflation_en: true
+  # unk_inflation_step: 2
+  # map_size: [10,10,10]
+
+  # If the map rolling is disable, the map origin [m] should be set.
+  fix_map_origin: [ 0,0,0 ]
+  frontier_extraction_en: true
+
+  # Virtual ceil and ground
+  virtual_ceil_height: 999
+  virtual_ground_height: -999
+
+  inf_point_flag_dis: 500
+  block_inf_point_with_inflated_occ: true
+  
+
+  block_inf_pt: false
+  kd_tree_en: false
+  safe_margin: 0.0
+  load_pcd_en: false
+  map_sliding:
+    enable: true
+    # The minimum distance [m] to slide the map.
+    threshold: 0.5
+
+  # If [enbale = true], the ROG-Map will actively take ros topic as input.
+  #  else user should call function [updateMap] to update the map.
+  ros_callback:
+    enable: false
+    cloud_topic: "/cloud_registered"
+    odom_topic: "/lidar_slam/odom"
+    odom_timeout: 2.0
+
+  visulization:
+    enbale: true
+    # The rate of visualization [Hz], if set to 0, the visualization will not be triggered by frame.
+    time_rate: 10
+    # The frame rate of visualization [Hz], if set to 0, the visualization will not be triggered by frame.
+    frame_rate: 0
+    # visualization range along the odom [m].
+    range: [ 4,4,4 ]
+    frame_id: "world"
+    pub_unknown_map_en: true
+
+  # Intensity filter for input point cloud. If the point intensity is less than this value,
+  # it will be ignored (to avoid noise like dusk).
+  intensity_thresh: -1
+  # The temporal downsample rate for input point cloud.
+  #  e.g. if set to k, the point cloud will be downsampled to 1/k.
+  point_filt_num: 1
+
+  # Probabilistc update
+  raycasting:
+    # if disable, the map will only maintain occupied information, and all other grid
+    # will be considered as unknown.
+    enable: true
+    # Add 11.15, filter the blind area
+    blind_filter_en: true
+    blind_filter_dis: 1.0
+    batch_update_size: 1
+    local_update_box: [10,10,8]
+    # The range of raycasting [m].
+    ray_range: [0.2, 5]
+
+    p_min: 0.12
+    p_miss: 0.45
+    p_free: 0.3
+    p_occ: 0.6
+    p_hit: 0.9
+    p_max: 0.95
+    # The threshold of a non-occupied inf map grid to be considered as free. [0.0-1.0]
+    # which means for a gird contains [u] unknown grids and [f] known free grids.
+    # if [f/(f+u) > inf_map_known_free_thresh], the grid will be considered as free.
+    #  e.g. this thresh is set to 1.0, it measn a inf map grid is considered as free only if all grids in it are known free.
+    inf_map_known_free_thresh: 0.2
+
+mpc:
+  horizon:       15
+  step:          0.1
+
+  R_p:           200.0
+  R_v:           0.0
+  R_a:           0.0
+  R_u:           0.0
+  R_u_con:       0.2
+  R_pN:          200.0
+  R_vN:          10.0
+  R_aN:          10.0
+
+  D_x:           0.0
+  D_y:           0.0
+  D_z:           0.0
+
+  vx_min:       -8.0
+  vy_min:       -8.0
+  vz_min:       -8.0
+  vx_max:        8.0
+  vy_max:        8.0
+  vz_max:        8.0
+
+  ax_min:       -10.0
+  ay_min:       -10.0
+  az_min:       -10.0
+  ax_max:        10.0
+  ay_max:        10.0
+  az_max:        10.0
+
+  ux_min:       -100.0
+  uy_min:       -100.0
+  uz_min:       -100.0
+  ux_max:        100.0
+  uy_max:        100.0
+  uz_max:        100.0

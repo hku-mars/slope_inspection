@@ -1,0 +1,94 @@
+#############################################
+#   Mapping                                 #
+#############################################
+# The points [out of local map] is considered to be [OUT_OF_MAP]
+# The points [out of virtual ceil or ground] is considered to be [OCCUPIED]
+
+bag_name: "/home/yunfan/success_long_filtered.bag"
+rog_map:
+  resolution: 0.1
+  inflation_resolution: 0.3
+  inflation_step: 2
+  unk_inflation_en: true
+  unk_inflation_step: 3
+  map_size: [ 30,30,20 ]
+  # If the map rolling is disable, the map origin [m] should be set.
+  fix_map_origin: [ 0,0,0 ]
+  frontier_extraction_en: true
+
+  # Virtual ceil and ground
+  virtual_ceil_height: 9999
+  virtual_ground_height: -9999
+
+  block_inf_pt: false
+  inf_point_flag_dis: 500
+  kd_tree_en: false
+  safe_margin: 0.0
+  load_pcd_en: false
+  pcd_name: "360.pcd"
+  map_sliding:
+    enable: false
+    # The minimum distance [m] to slide the map.
+    threshold: 0.05
+
+  # If [enbale = true], the ROG-Map will actively take ros topic as input.
+  #  else user should call function [updateMap] to update the map.
+  ros_callback:
+    enable: true
+    cloud_topic: "/cloud_registered"
+    odom_topic: "/lidar_slam/odom"
+    odom_timeout: 2.0
+
+
+  visulization:
+    enbale: true
+    # The rate of visualization [Hz], if set to 0, the visualization will not be triggered by frame.
+    time_rate: 2
+    # The frame rate of visualization [Hz], if set to 0, the visualization will not be triggered by frame.
+    frame_rate: 0
+    # visualization range along the odom [m].
+    range: [ 40, 40, 8 ]
+    frame_id: "world"
+    pub_unknown_map_en: true
+
+  # Intensity filter for input point cloud. If the point intensity is less than this value,
+  # it will be ignored (to avoid noise like dusk).
+  intensity_thresh: -10
+  # The temporal downsample rate for input point cloud.
+  #  e.g. if set to k, the point cloud will be downsampled to 1/k.
+  point_filt_num: 1
+
+  # Probabilistc update
+  raycasting:
+    # if disable, the map will only maintain occupied information, and all other grid
+    # will be considered as unknown.
+    enable: true
+    blind_filter_en: true
+    block_inf_point_with_inflated_occ: true
+    blind_filter_dis: 1.0
+    batch_update_size: 1
+    local_update_box: [ 25,25,20 ]
+    # The range of raycasting [m].
+    ray_range: [ 0.2, 999 ]
+
+    p_min: 0.12
+    p_miss: 0.451
+    p_free: 0.451
+    p_occ: 0.85
+    p_hit: 0.88
+    p_max: 0.98
+    # The threshold of a non-occupied inf map grid to be considered as free. [0.0-1.0]
+    # which means for a gird contains [u] unknown grids and [f] known free grids.
+    # if [f/(f+u) > inf_map_known_free_thresh], the grid will be considered as free.
+    #  e.g. this thresh is set to 1.0, it measn a inf map grid is considered as free only if all grids in it are known free.
+    inf_map_known_free_thresh: 0.5
+
+
+astar:
+  map_voxel_num: [ 50,50,20 ]
+  visual_process: false
+
+
+
+
+

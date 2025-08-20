@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="mars_base" type="swarm_led_node" name="swarm_led_node" output="screen"></node>
+</launch>

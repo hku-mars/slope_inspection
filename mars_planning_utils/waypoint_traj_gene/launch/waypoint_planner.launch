@@ -1,0 +1,13 @@
+<launch>
+
+
+    <rosparam command="load" file="$(find waypoint_traj_gene)/config/waypoint_planner.yaml"></rosparam>
+    <node pkg="waypoint_traj_gene" name="waypoint_planner" type="waypoint_planner" output="screen">
+    </node>
+
+    <!--    <node name="rvizvisualisation" pkg="rviz" type="rviz" output="screen"-->
+    <!--          args="-d $(find test_interface)/config/super_planner.rviz"/>-->
+    <!--    <node name="fpv" pkg="rviz" type="rviz" output="screen" args="-d $(find test_interface)/config/fpv.rviz"/>-->
+
+
+</launch>

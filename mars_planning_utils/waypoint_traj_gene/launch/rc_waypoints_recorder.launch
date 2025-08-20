@@ -1,0 +1,8 @@
+
+<launch>
+
+    <node pkg="real_flight_utils" type="rc_waypoint_recorder" name="rc_waypoint_recorder" output="screen" >
+        <remap from="~odom" to="/lidar_slam/odom"></remap>
+    </node>
+
+</launch>

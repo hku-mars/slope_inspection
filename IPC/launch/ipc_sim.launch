@@ -1,0 +1,33 @@
+<launch>
+    <node pkg="ipc" type="ipc_node" name="ipc_node" output="screen">
+        <!-- service -->
+        <remap from="reboot"       to="/mavros/cmd/command"/>
+        <remap from="arming"       to="/mavros/cmd/arming"/>
+        <remap from="set_mode"     to="/mavros/set_mode"/>
+
+        <!-- publish topic -->
+        <remap from="pvaj_cmd"     to="/planning/pos_cmd"/>
+        <remap from="px4_cmd"      to="/mavros/setpoint_raw/attitude2"/>
+        <remap from="astar_path"   to="/astar/path"/>
+        <remap from="astar_map"    to="/astar/map"/>
+        <remap from="mpc_path"     to="/ipc/path"/>
+        <remap from="goal_pub"     to="/ipc/goal"/>
+        <remap from="sfc"          to="/ipc/sfc"/>
+        
+        <!-- subscribe topic -->
+        <remap from="odom"         to="/lidar_slam/odom"/>
+        <remap from="imu"          to="/lidar_slam/imu"/>
+        <remap from="imu_raw"      to="/mavros/imu/data_raw"/>
+        <remap from="battery"      to="/mavros/battery"/>
+        <remap from="goal"         to="/goal"/>
+        <remap from="rc"           to="/mavros/rc/in"/>
+        <remap from="state"        to="/mavros/state"/>
+        <remap from="local_pc"     to="/pcl_render_node/cloud"/>
+
+        <rosparam command="load" file="$(find ipc)/config/param_sim.yaml"/>
+    </node>
+
+    <!-- <include file="$(find test_interface)/launch/so3_quadrotor_sim.xml"></include> -->
+    <node name="ipc_sim" pkg="rviz" type="rviz" args="-d $(find ipc)/config/env_sim.rviz"/>
+
+</launch>

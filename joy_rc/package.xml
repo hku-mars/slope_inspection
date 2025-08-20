@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>joy_rc</name>
+  <version>0.0.0</version>
+  <description>The joy_rc package</description>
+  <maintainer email="Critical_HIT@todo.todo">Critical_HIT</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

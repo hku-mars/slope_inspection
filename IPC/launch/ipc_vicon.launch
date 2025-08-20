@@ -1,0 +1,30 @@
+<launch>
+    <node pkg="ipc" type="ipc_node" name="ipc_node" output="screen">
+        <!-- service -->
+        <remap from="reboot"       to="/mavros/cmd/command"/>
+        <remap from="arming"       to="/mavros/cmd/arming"/>
+        <remap from="set_mode"     to="/mavros/set_mode"/>
+
+        <!-- publish topic -->
+        <remap from="pvaj_cmd"     to="/planning/pos_cmd"/>
+        <remap from="px4_cmd"      to="/mavros/setpoint_raw/attitude"/>
+        <remap from="astar_path"   to="/astar/path"/>
+        <remap from="mpc_path"     to="/ipc/path"/>
+        <remap from="goal_pub"     to="/ipc/goal"/>
+        <remap from="sfc"          to="/ipc/sfc"/>
+        
+        <!-- subscribe topic -->
+        <remap from="odom"         to="/launch_lwy/viconros/odom"/>
+        <remap from="imu"          to="/mavros/imu/data"/>
+        <remap from="imu_raw"      to="/mavros/imu/data_raw"/>
+        <remap from="battery"      to="/mavros/battery"/>
+        <remap from="goal"         to="/goal"/>
+        <remap from="rc"           to="/mavros/rc/in"/>
+        <remap from="state"        to="/mavros/state"/>
+
+        <rosparam command="load" file="$(find ipc)/config/param_vicon.yaml"/>
+    </node>
+
+    <node name="ipc" pkg="rviz" type="rviz" args="-d $(find ipc)/config/env_vicon.rviz"/>
+
+</launch>

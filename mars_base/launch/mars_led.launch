@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="mars_base" type="mars_led_node" name="mars_led_node" output="screen">
+    
+    </node>
+</launch>

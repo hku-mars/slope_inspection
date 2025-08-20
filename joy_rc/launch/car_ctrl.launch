@@ -1,0 +1,9 @@
+<launch>
+    <node pkg="joy" type="joy_node" name="joy_node" output="screen"/>
+
+    <node pkg="joy_rc" type="car_ctrl_node" name="car_ctrl_node" output="screen">
+        <param name="gain_vx"        value="1.5"/>
+        <param name="gain_vw"        value="1.5"/>
+        <param name="pz"             value="0.5"/>
+    </node>
+</launch>

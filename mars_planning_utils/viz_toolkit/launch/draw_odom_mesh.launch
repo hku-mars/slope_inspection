@@ -1,0 +1,9 @@
+<launch>
+
+        <node name="draw_odom_mesh" pkg="viz_toolkit" type="draw_odom_mesh" output="screen">
+                <param name="bag_path" value="/home/yunfan/success_long_filtered.bag"/>
+                <param name="scale" value="0.9"/>
+                <param name="pos_tor" value="0.55"/>
+                <param name="mesh_resource" value="package://viz_toolkit/meshes/yunque-M.dae"/>
+        </node>
+</launch>

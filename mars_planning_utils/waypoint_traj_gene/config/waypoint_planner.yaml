@@ -1,0 +1,38 @@
+waypoint_planner:
+  mission_planner:
+    goal_pub_topic: "/planning/click_goal"
+    path_pub_topic: "/planning/path_goal"
+    odom_topic: "/lidar_slam/odom"
+    # 0 for RVIZ and 1 for Mavros
+    start_trigger_type: 0
+    # 0 for PATH and 1 for waypoints
+    cmd_type: 1
+    # the distance threshold for waypoint goal swithcing
+    switch_dis: 1.0
+    # odom timeout threshold (s)
+    odom_timeout: 0.1
+    # goal publish dt (s), set to inf if the goal only need to pub once
+    publish_dt: 9999999.0
+    # mission waypoints, must be in the same dimension
+  #    waypoints_file_name: "a_working_waypoints.txt"
+    waypoints_file_name: "bee.txt"
+    scale: -0.5
+    height: 1.2
+
+  traj_opt:
+    way_pt:
+      energy_cost_type: 4
+      block_energy_cost: false
+      opt_accuracy: 1.0e-5
+      scale_factor: 1.0
+      integral_reso: 10
+      smooth_eps: 0.01
+      max_vel: 1.0
+      max_acc: 1.0
+      max_jerk: 60.0
+      penna_t: 60.0
+      penna_pos: 1.0e+6
+      penna_vel: 5.0e+5
+      penna_acc: 5.0e+5
+      penna_jerk: 1.0e+5 #1.0e+8 #
+      penna_attract: 1.0e+5

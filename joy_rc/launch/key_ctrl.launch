@@ -1,0 +1,8 @@
+<launch>
+    <node pkg="joy_rc" type="key_ctrl_node" name="key_ctrl_node" output="screen">
+        <param name="gain1"        value="10.0"/>
+        <param name="gain2"        value="5.0"/>
+
+        <remap from="cmd_vel"      to="/manual/vel_cmd"/>
+    </node>
+</launch>

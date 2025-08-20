@@ -1,0 +1,9 @@
+<launch>
+    <node pkg="joy" type="joy_node" name="joy_node" output="screen"/>
+
+    <node pkg="joy_rc" type="BT_x1_node" name="BT_x1_node" output="screen">
+        
+        <remap from="joy"          to="/joy"/>
+        <remap from="rc"           to="/mavros/rc/in"/>
+    </node>
+</launch>

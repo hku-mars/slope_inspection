@@ -1,0 +1,5 @@
+<launch>
+    <include file="$(find test_interface)/launch/so3_quadrotor_sim.xml"></include>
+    
+    <node name="ipc" pkg="rviz" type="rviz" args="-d $(find ipc)/config/env_sim.rviz"/>
+</launch>
