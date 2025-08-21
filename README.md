@@ -21,7 +21,7 @@
     </p>
 </div>
 
-## Overview
+# Overview
 
 Paper: [Natrue Communications](https://www.nature.com/articles/s41467-025-62801-y)
 
@@ -48,17 +48,17 @@ If our repository supports your academic projects, please cite our work. Thank y
 }
 ```
 
-## 1. About this work
+# 1. About this work
 
 Landslides pose significant threats to residents' safety and daily lives. To mitigate such risks, flexible debris-resisting barriers are constructed and regularly inspected, a task known as slope inspection. Traditional manual inspections are costly and difficult due to steep terrains and dense vegetation. Unmanned aerial vehicle (UAV) equipped with LiDAR and cameras offers high mobility, making them well-suited for slope inspections. However, existing UAV solutions lack comprehensive frameworks to handle dense vegetation, including robust localization, high-precision mapping, small and dynamic obstacle avoidance, and cluttered under-canopy navigation. To address these challenges, we develop a LiDAR-based quadrotor with a comprehensive software system. Our quadrotor features assisted obstacle avoidance, enabling it to autonomously avoid intricate obstacles while executing pilot commands. Field experiments conducted in collaboration with the Hong Kong Civil Engineering and Development Department demonstrate our quadrotor's ability to avoid small obstacles and maneuver in dense vegetation, validating its practical potential for slope inspection.
 
-## 2. Prerequisited
+# 2. Prerequisited
 
-### 2.1 Ubuntu and ROS
+## 2.1 Ubuntu and ROS
 
 Ubuntu 18.04~20.04, [ROS Installation](http://wiki.ros.org/ROS/Installation)
 
-### 2.2 PCL and Eigen
+## 2.2 PCL and Eigen
 
 PCL >= 1.6, follow [PCL Installation](https://pointclouds.org)
 
@@ -70,7 +70,7 @@ glfw3:
 sudo apt-get install libglfw3-dev libglew-dev
 ```
 
-### 2.3 OSQP and OSQP-Eigen
+## 2.3 OSQP and OSQP-Eigen
 
 Select the version below v0.6.3
 
@@ -102,25 +102,25 @@ sudo make
 sudo make install
 ```
 
-### 2.4 serial
+## 2.4 serial
 
 ```bash
 sudo apt-get install ros-noetic-serial
 ```
 
-### 2.5 fmt
+## 2.5 fmt
 
 ```bash
 sudo apt-get install ros-noetic-rosfmt -y
 ```
 
-### 2.6 joy
+## 2.6 joy
 
 ```bash
 sudo apt-get install ros-noetic-joy
 ```
 
-### 2.7 Other
+## 2.7 Other
 
 A debug tool: *backward.cpp*
 
@@ -131,7 +131,7 @@ wget https://raw.githubusercontent.com/bombela/backward-cpp/master/backward.hpp
 sudo mv backward.hpp /usr/include
 ```
 
-## 3 Make
+# 3 Make
 
 ```
 mkdir -p slope_ws
@@ -142,9 +142,9 @@ catkin_make -DCATKIN_WHITELIST_PACKAGES="mars_base"
 catkin_make -DCATKIN_WHITELIST_PACKAGES=
 ```
 
-## 4 Run and test
+# 4 Run and test
 
-### (1) run MARSIM simulator
+## 4.1 run MARSIM simulator
 
 static environment
 
@@ -160,7 +160,7 @@ source devel/setup.bash
 roslaunch test_interface map_dyn.launch
 ```
 
-### (2) run ipc
+## 4.2 run ipc
 
 for static environment (high traversability)
 
@@ -176,7 +176,7 @@ source devel/setup.bash
 roslaunch ipc ipc_sim_dyn.launch
 ```
 
-### (3) run rc
+## 4.3 run rc
 
 option 1: PX4 flight controller + receiver + remote controller
 
@@ -200,7 +200,7 @@ option 3: joystick
 roslaunch joy_rc BT_x1.launch
 ```
 
-### (4) rc operation process
+## 4.4 rc operation process
 
 | Mode | Description | Channel 4 | Channel 5 | Channel 10 |
 | :----: | :----: | :----: | :----: | :----: |
@@ -213,6 +213,6 @@ roslaunch joy_rc BT_x1.launch
 
 **Note**: Channel 11 for rc gain, trigger to high position to increase flight speed.
 
-### (5) some suggestions
+## 4.5 some suggestions
 
 Due to the limited FOV of the LiDAR, the number of Unknown grid cells may reduce the traversability to navigate during assisted obstacle avoidance flight. In such cases, the pilot can move the control stick rapidly in multiple directions (forward, backward, left, and right) to convert as many Unknown grid cells as possible into Known Free state.
