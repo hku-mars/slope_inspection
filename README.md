@@ -25,7 +25,7 @@
 
 Paper: [Natrue Communications](https://www.nature.com/articles/s41467-025-62801-y)
 
-Code: [Github](https://github.com/hku-mars/IPC)
+Code: [Github](https://github.com/hku-mars/slope_inspection)
 
 Video Links: [youtube](https://www.youtube.com/watch?v=x8UHqSNi7kg), [Bilibili](https://www.bilibili.com/video/BV1P7e3zgEaa)
 
