@@ -23,7 +23,7 @@
 
 # Overview
 
-Paper: [Natrue Communications](https://www.nature.com/articles/s41467-025-62801-y)
+Paper: [Nature Communications](https://www.nature.com/articles/s41467-025-62801-y)
 
 Code: [Github](https://github.com/hku-mars/slope_inspection)
 
