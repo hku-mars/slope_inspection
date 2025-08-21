@@ -1,8 +1,27 @@
-# *[Natrue Communications]* Slope inspection under dense vegetation using LiDAR-based quadrotors
+<div align="center">
+    <h2>Slope inspection under dense vegetation using LiDAR-based quadrotors</h2>
+    <strong>Nature Communications' 25</strong>
+    <br>
+        <a href="https://github.com/FENYUN323" target="_blank">Wenyi Liu</a>,
+        <a href="https://github.com/RENyunfan" target="_blank">Yunfan REN</a>,
+        <a target="_blank">Rui Guo</a>,
+        <a target="_blank">Vickie W. W. Kong</a>,
+        <a target="_blank">Anthony S. P. Hung</a>,
+        <a href="https://github.com/zfc-zfc" target="_blank">Fangcheng Zhu</a>,
+        <a href="https://github.com/Ecstasy-EC" target="_blank">Yixi Cai</a>,
+        <a href="https://github.com/HuajieWu99" target="_blank">Huajie Wu</a>, 
+        <a href="https://github.com/cicizou" target="_blank">Yuying Zou</a>, and
+        <a href="https://mars.hku.hk/people.html" target="_blank">Fu Zhang</a>
+    <p>
+        <h45>
+            <br>
+           <img src='./img/mars_logo.svg' alt='HKU MaRS Lab'>
+            <br>
+        </h5>
+    </p>
+</div>
 
 ## Overview
-
-Author: [Wenyi Liu](https://github.com/FENYUN323), [Yunfan Ren](https://github.com/RENyunfan) and [Fu Zhang](https://www.mech.hku.hk/academic-staff/Zhang-F) from [HKU MARS Lab](https://mars.hku.hk/).
 
 Paper: [Natrue Communications](https://www.nature.com/articles/s41467-025-62801-y)
 
